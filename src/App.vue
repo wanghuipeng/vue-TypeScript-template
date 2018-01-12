@@ -2,8 +2,9 @@
   <div id="app">
     <img src="./assets/logo.png">
     <div class="page-link">
-      <router-link to="/" @click="changeTitle('欢迎页面')">欢迎页面</router-link>
-      <router-link to="/counter" @click="changeTitle('Counter页面')">Counter页面</router-link>
+      <router-link to="/" @click.native="changeTitle('欢迎页面')">欢迎页面</router-link>
+      <router-link to="/counter" @click.native="changeTitle('Counter页面')">Counter页面</router-link>
+      <router-link to="/element" @click.native="changeTitle('ElementUI页面')">ElementUI页面</router-link>      
     </div>
     <router-view/>
   </div>
@@ -14,9 +15,8 @@ export default {
   name: 'app',
   methods: {
     changeTitle(title) {
-      let titleNode = document.getElementsByTagName('title');
-      console.log(titleNode,1)
-      title.innerText = title;
+      let titleNode = document.getElementById('page-title')
+      titleNode.textContent = title;
     }
   }
 }
@@ -33,11 +33,10 @@ export default {
 }
 .page-link a {
   display: inline-block;
-  width: 98px;
-  height: 32px;
-  line-height: 32px;
+  padding: 2px 6px;
   text-align: center;
   color: #666;
+  font-size: 14px;
   font-weight: bold;
   border: 1px solid #ccc;
   border-radius: 4px;
